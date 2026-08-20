@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     char buffer[BUFFER_SIZE];
 
     while(fgets(buffer, sizeof(buffer), SOURCEFILE) != NULL) {
-        printf("%s\n", buffer);
+        printf("%s", buffer);
     }
 
     return 0;
