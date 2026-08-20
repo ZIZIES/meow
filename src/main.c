@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define BUFFER_SIZE 256
+#define BUFFER_SIZE 65536
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
@@ -16,9 +16,10 @@ int main(int argc, char *argv[]) {
     }
 
     char buffer[BUFFER_SIZE];
+    size_t n;
 
-    while(fgets(buffer, sizeof(buffer), SOURCEFILE) != NULL) {
-        printf("%s", buffer);
+    while ((n = fread(buffer, 1, sizeof buffer, SOURCEFILE)) > 0) {
+        fwrite(buffer, 1, n, stdout);
     }
 
     return 0;
